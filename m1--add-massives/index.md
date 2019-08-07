@@ -12,13 +12,11 @@ Jour 2
 
 Jour 3
 - [Analyse de données avec Python](seance5-analyse.html)
-- [TP noté](<!-- tpnote1.html -->)
+- [TP noté]<!-- (tpnote1.html) -->
 
 Jour 4
 - [Introduction à MongoDB](seance6-slides.html) - [Connexion à MongoDB, sous Python](seance6-mongodb.html)
-<!--
-- [TP noté](tpnote2.html)
--->
+- [TP noté]<!-- (tpnote2.html) -->
 
 Jour 5
 - [Données du projet](seance7-donnees-projet.html)
