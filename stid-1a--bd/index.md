@@ -1,7 +1,5 @@
----
-layout: default
-title: Exploitation de données
----
+# Exploitation de données
+
 
 ## Déroulement
 
