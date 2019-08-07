@@ -6,7 +6,7 @@ title: Exploitation de données
 ## Déroulement
 
 - Première séance
-    - [Cours](cours.html)
+    - [Cours](cours-bd.html)
     - [TD](td)
 - Séances suivantes :
     - sur l'[application web](http://fxjollois.github.io/cours-sql) développée spécifiquement pour le cours d'**Exploitation de données** de STID 1ère année.
