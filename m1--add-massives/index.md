@@ -2,6 +2,8 @@
 
 Ce cours est une introduction à l'analyse de données massives, via l'utilisation de `python`.
 
+[test seance 1](seance1-intro.ipynb)
+
 Jour 1
 - [Introduction à Python](seance1-intro.html)
 - [Statistiques avec Python](seance2-stats.html)
