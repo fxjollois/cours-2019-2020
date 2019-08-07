@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <link rel = "stylesheet" type = "text/css" href = "../remarkjs-v2.css">
+        <link rel = "icon" href = "../favicon-graduation-cap.ico" type = "image/x-icon">
+    </head>
+    <body>
+        <textarea id="source">
+            <!--
+                Slideshow Markdown pas besoin car sourceUrl plus bas
+            -->
+        </textarea>
+        <script src="../remark.js"></script>
+        <script>
+            var slideshow = remark.create({
+                sourceUrl: 'seance6-slides.md',
+                ratio: "16:9",
+                countIncrementalSlides: false,
+                slideNumberFormat: function (current, total) {
+                    p = Math.round((current - 1) / (total - 1) * 100);
+                    return '<div id="myProgress"><div id="myBar" style="width: ' + p + '%"></div></div>'
+                }
+            });
+        </script>
+    </body>
+</html>

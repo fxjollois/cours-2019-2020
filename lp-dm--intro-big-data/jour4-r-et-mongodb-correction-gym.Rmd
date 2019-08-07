@@ -1,0 +1,195 @@
+---
+title: Connexion entre `R` et MongoDB
+subtitle: correction `gym`
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(mongolite)
+conSportifs = mongo(collection = "Sportifs", db = "gym", 
+                    url = "mongodb://193.51.82.104:2343")
+conGymnases = mongo(collection = "Gymnases", db = "gym", 
+                    url = "mongodb://193.51.82.104:2343")
+```
+
+
+Répondre aux questions suivantes, directement sous `R`.
+
+### 01. Quels sont les sportifs (identifiant, nom et prénom) qui ont entre 20 et 30 ans ?
+
+```{r}
+conSportifs$find(
+  query = '{ "Age": { "$gte": 20, "$lte": 30 } }',
+  fields = '{ "_id": 0, "IdSportif": 1, "Nom": 1, "Prenom": 1 }'
+)
+```
+
+Pour les allergiques au `JSON` :
+
+```{r}
+library(jsonlite)
+q = toJSON(list(Age = list("$gte" = 20, "$lte" = 30)), 
+           auto_unbox = T)
+print(q)
+f = toJSON(list("_id" = 0, IdSportif = 1, Nom = 1, Prenom = 1), 
+           auto_unbox = T)
+print(f)
+conSportifs$find(query = q, fields = f)
+```
+
+### 02. Quels sont les gymnases de "Villetaneuse" ou de "Sarcelles" qui ont une surface de plus de 400 m2 ?
+
+```{r}
+conGymnases$find(
+  query = '{
+        "Ville": { "$in": [ "VILLETANEUSE", "SARCELLES"]},
+        "Surface": { "$gte": 400 }
+    }',
+  fields = '{
+        "_id": 0,
+        "NomGymnase": 1,
+        "Ville": 1,
+        "Surface": 1
+    }'
+)
+```
+
+
+### 03. Quels sont les sportifs (identifiant et nom) qui pratiquent du hand ball ?
+
+```{r}
+conSportifs$find(
+  query = '{
+        "Sports.Jouer": "Hand ball"
+    }',
+  fields = '{
+        "_id": 0,
+        "IdSportif": 1,
+        "Nom": 1
+    }'
+)
+```
+
+
+### 04. Dans quels gymnases et quels jours y a t-il des séances de hand ball ?
+
+```{r}
+res = conGymnases$aggregate(
+'[
+    { "$unwind" : "$Seances" },
+    { "$match": { "Seances.Libelle" : "Hand ball" }},
+    { "$group": {
+        "_id": { 
+          "Nom": "$NomGymnase", 
+          "Ville": "$Ville"
+        },
+        "Jours": { "$addToSet": { "$toLower" : "$Seances.Jour" } }
+    }}
+]')
+```
+
+
+### 05. Dans quels gymnases peut-on jouer au hockey le mercredi apres 15H ?
+
+```{r}
+conGymnases$aggregate(
+'[
+    { "$unwind": "$Seances" },
+    { "$match": {
+        "Seances.Libelle" : "Hockey",
+        "Seances.Jour": { "$in": [ "mercredi", "Mercredi" ]},
+        "Seances.Horaire": { "$gte": 15 }
+    }},
+    { "$project": {
+        "_id": 0,
+        "Gymnase" : "$NomGymnase", 
+        "Ville" : "$Ville"
+    }},
+    { "$sort": {
+        "Ville": 1,
+        "Gymnase": 1
+    }}
+]')
+```
+
+### 06. Quels sportifs (identifiant et nom) ne pratiquent aucun sport ?
+
+```{r}
+conSportifs$find(
+  query = '{
+        "Sports" : { "$exists" : false }
+    }',
+  fields = '{
+        "_id": 0,
+        "Nom":  1
+    }'
+)
+```
+
+
+### 07. Quels gymnases n'ont pas de séances le dimanche ?
+
+```{r}
+conGymnases$find(
+  query = '{
+        "Seances.Jour" : { "$nin" : [ "dimanche", "Dimanche" ]}
+    }',
+  fields = '{
+        "_id": 0,
+        "NomGymnase": 1,
+        "Ville": 1
+    }'
+)
+```
+
+
+### 08. Quels gymnases ne proposent que des séances de basket ball ou de volley ball ?
+
+```{r}
+conGymnases$find(
+  query = '{
+        "$nor": [
+            { "Seances.Libelle": { "$ne": "Basket ball" }},
+            { "Seances.Libelle": { "$ne": "Volley ball" }}
+        ]
+    }',
+  fields = '{
+        "_id": 0,
+        "NomGymnase": 1,
+        "Ville": 1,
+        "Seances.Libelle": 1
+    }'
+)
+```
+
+
+### 09. Quels sont les entraîneurs qui sont aussi joueurs ?
+
+```{r}
+conSportifs$find(
+  query = '{
+        "Sports.Jouer" : { "$exists" : true },
+        "Sports.Entrainer" : { "$exists" : true }
+    }',
+  fields = '{
+        "_id": 0,
+        "Nom":  1
+    }'
+)
+```
+
+
+### 10. Quels sont les sportifs qui sont des conseillers ?
+
+```{r}
+conseillers = conSportifs$distinct("IdSportifConseiller")
+
+conSportifs$find(
+  query = toJSON(list(IdSportif = list("$in" = conseillers))),
+  fields = '{
+        "_id": 0,
+        "Nom":  1
+    }'
+)
+```

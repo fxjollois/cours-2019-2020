@@ -1,0 +1,241 @@
+---
+title: Connexion entre `R` et MongoDB
+output:
+    html_document:
+        toc: true
+        toc_float: true
+        toc_depth: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+## Connexion à Mongo
+
+On commence par charger les librairies, et créer les deux connexions aux deux collections utiliées.
+
+```{r}
+library(mongolite)
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(leaflet)
+library(sp)
+```
+
+```{r}
+cap = mongo(collection = "capteurs", db = "trafic", 
+            url = "mongodb://193.51.82.104:2343")
+tra = mongo(collection = "trafic", db = "trafic", 
+            url = "mongodb://193.51.82.104:2343")
+```
+
+
+## Réponses
+  
+### Présentation des collections 
+
+Il y a donc `r cap$count()` capteurs présents dans la base de données, dont voici le premier enregistrement :
+
+```{r}
+toJSON(cap$find(limit = 1), pretty = T)
+```
+
+Pour les enregistrements, il y en a `r tra$count()`, avec un schéma comme ci-dessous (premier document) :
+
+```{r}
+toJSON(tra$find(limit = 1), pretty = T)
+```
+
+### Mesures de trafic 
+
+Pour calculer le nombre de mesures de trafic par année, par mois puis par jour de la semaine, nous devons faire un agrégat, trois fois. Plutôt que de surcharger le serveur, nous allons réaliser un calcul d'agrégat sur ces trois critères en une fois, et ensuite faire les calculs dans `R` (voire les graphiques).
+
+```{r}
+trafic_agg = tra$aggregate(
+'[
+  { "$group": { 
+    "_id": { 
+      "annee": { "$year": "$date" },
+      "mois": { "$month": "$date" },
+      "jour": { "$dayOfWeek": "$date" }
+    }, 
+    "nb": { "$sum": 1 }
+  }}
+]')
+```
+
+
+#### par année
+
+```{r}
+tibble(annee = trafic_agg$`_id`$annee, nb = trafic_agg$nb) %>%
+  group_by(annee) %>%
+  summarise(nb = sum(nb)) %>%
+  ggplot(aes(annee, nb)) +
+  geom_bar(stat = "identity") +
+  theme_classic()
+```
+
+#### par mois
+
+```{r}
+tibble(mois = trafic_agg$`_id`$mois, nb = trafic_agg$nb) %>%
+  group_by(mois) %>%
+  summarise(nb = sum(nb)) %>%
+  ggplot(aes(mois, nb)) +
+  geom_bar(stat = "identity") +
+  scale_x_continuous(breaks = 1:12) +
+  theme_classic()
+```
+
+#### par jour de la semaine
+
+```{r}
+tibble(jour = trafic_agg$`_id`$jour, nb = trafic_agg$nb) %>%
+  group_by(jour) %>%
+  summarise(nb = sum(nb)) %>%
+  ggplot(aes(jour, nb)) +
+  geom_bar(stat = "identity") +
+  scale_x_continuous(breaks = 1:7) +
+  theme_classic()
+```
+
+
+### Carte des capteurs
+
+```{r}
+capteurs = cap$find(fields = '{ "geometry.coordinates": 1}')
+
+capteurs$lng = sapply(capteurs$geometry$coordinates, 
+                      function(e) { 
+                        if (!is.null(e)) return(e[1]); 
+                        return(NA) 
+                      })
+capteurs$lat = sapply(capteurs$geometry$coordinates, 
+                      function(e) { 
+                        if (!is.null(e)) return(e[2]); 
+                        return(NA) 
+                      })
+
+paris = leaflet() %>% addTiles %>%
+  setView(lng = 2.34, lat = 48.855, zoom = 12) %>% 
+  addProviderTiles(providers$Stamen.TonerLite) 
+
+paris %>%
+  addCircleMarkers(data = capteurs, lng = ~lng, lat = ~lat,
+                   weight = 1, radius = 3, 
+                   fillOpacity = 1, fillColor = "red")
+```
+
+
+### Informations sur un capteur 
+
+Ici aussi, on va decoupler le problème. On va récupérer les infos du capteurs `1111` de Mongo, puis faire les autres calculs directement dans `R`.
+
+```{r}
+cap1111 = tra$find(query = ' { "id": 1111 }')
+```
+
+Afficher les évolutions
+
+#### depuis le début
+
+```{r}
+ggplot(cap1111, aes(date, tauxNum)) +
+  geom_line() +
+  theme_classic()
+```
+
+#### par année (une couleur par année)
+
+```{r}
+cap1111 %>% 
+  mutate(annee = format(date, "%Y"), 
+         jour = format(date, "%j")) %>%
+  ggplot(aes(jour, tauxNum, col = annee)) +
+  geom_line() +
+  theme_classic()
+```
+
+#### moyenne journalière globale
+
+```{r}
+cap1111 %>%
+  mutate(jour = as.Date(date)) %>%
+  group_by(jour) %>%
+  summarise(moy = mean(tauxNum, na.rm = TRUE)) %>%
+  ggplot(aes(jour, moy)) +
+  geom_line() +
+  theme_classic()
+```
+
+
+#### moyenne sur une journée (par heure donc) par mois
+
+```{r}
+cap1111 %>%
+  mutate(heure = format(date, "%H"),
+         mois = format(date, "%m")) %>%
+  group_by(heure, mois) %>%
+  summarise(moy = mean(tauxNum, na.rm = TRUE)) %>%
+  ggplot(aes(heure, moy, col = mois, group = mois)) +
+  geom_line() +
+  theme_classic()
+```
+
+
+#### moyenne sur une journée (par heure donc) par jour de la semaine
+
+```{r}
+cap1111 %>%
+  mutate(heure = format(date, "%H"),
+         jour = format(date, "%A")) %>%
+  group_by(heure, jour) %>%
+  summarise(moy = mean(tauxNum, na.rm = TRUE)) %>%
+  ggplot(aes(heure, moy, col = jour, group = jour)) +
+  geom_line() +
+  theme_classic()
+```
+
+#### cumul des deux informations sur un même graphique
+
+```{r}
+cap1111 %>%
+  mutate(heure = format(date, "%H"),
+         mois = format(date, "%m"),
+         jour = format(date, "%A")) %>%
+  group_by(heure, jour, mois) %>%
+  summarise(moy = mean(tauxNum, na.rm = TRUE)) %>%
+  ggplot(aes(heure, moy, col = jour, group = jour)) +
+  geom_line() +
+  facet_wrap(~ mois) +
+  theme_classic()
+```
+
+### Récupérer les coordonnées du tronçon de chaque capteur, puis les afficher sur une carte
+
+On récupère les éléments, mais en `list`, avec `iterate()`. Ensuite, on créée chaque ligne, avec les fonctions `Line()` et `Lines()` du package `sp`. Cela nous permet de créer des `SpatialLines`, puis de les afficher simplement dans la carte.
+
+```{r, eval = FALSE}
+capteurs = cap$iterate(
+  fields = '{ "fields.geo_shape.coordinates": 1,
+              "fields.id_arc": 1, "fields.ir_arc_tra": 1}'
+)$batch()
+
+lst_lines = lapply(
+  Filter(function(e) { !is.null(e$fields$id_arc)}, capteurs),
+  function(e) {
+    c = e$fields$geo_shape$coordinates
+    i = i + 1
+    Lines(Line(rbind(unlist(c[[1]]), unlist(c[[2]]))),
+          ID = e$fields$id_arc)
+  }
+)
+
+spl_lst <- SpatialLines(lst_lines)
+
+paris %>%
+  addPolylines(data = spl_lst, color = "red")
+```
+
+

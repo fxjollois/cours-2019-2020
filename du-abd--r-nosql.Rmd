@@ -1,0 +1,19 @@
+---
+title: "DU ABD - R et NoSQL"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+2 parties :
+
+1. R et HADDOP
+1. R et MongoDB
+
+
+
+Les VM Hadoop ont été déployées, voici les adresses IP accessibles sur le port 8888 (Ex : http://172.19.35.201:8888/)
+Dis-nous si cela te convient.
+

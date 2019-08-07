@@ -1,0 +1,24 @@
+# cours-2019-2020
+
+## Département STID, IUT Paris Descartes
+
+- DUT STID 1ère année
+    - [Bases de données](stid-1a--bd/)
+- DUT STID 2ème année (en alternance)
+    - [SID](stid-2fa--sid/)
+    - [Travaux de fin d'études](stid-2afa--tfe)
+- LP Data-Mining
+    - [Introduction au Big Data](lp-dm--intro-big-data/)
+- LP Santé
+    - [Introduction au Nouvelles Données](lp-sante--intro-new-data/)
+- DU Analyste Big Data
+    - [Introduction à R et **MongoDB**](du-abd--r-mongodb.html)
+    - [Introduction à R et **Hadoop**](du-abd--r-hadoop.html) (avec **SparkR**)
+- DU Dataviz
+    - [Introduction à d3.js](du-dataviz--d3js)    
+
+## UFR Math-Info
+
+- Master 1
+    - [Analyse de données massives](m1--add-massives/)
+
