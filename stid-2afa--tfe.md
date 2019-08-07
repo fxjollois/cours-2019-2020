@@ -28,5 +28,5 @@ Vous pouvez bien évidemment compléter les données utilisées avec d'autres do
     - plus d'étudiants = plus de travail attendu
 - Application web `shiny` à produire sur [`shinyapps.io`](https://www.shinyapps.io/)
     - version gratuite largement suffisante pour le projet
-- Soutenance de l'application **le Vendredi 7 juin**
+- Soutenance de l'application **date à définir**
     - chaque groupe présentera son appli à toute la promo
