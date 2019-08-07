@@ -1,0 +1,33 @@
+---
+title: "TP Noté"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## TP noté
+
+Rendu par mail à l'adresse <francois-xavier.jollois@parisdescartes.fr>
+
+- Objet : [LP DM] TP noté - NOM (-> votre nom)
+- Sujet : un petit bonjour ne fait pas de mal
+- Pièce jointe : le fichier .Rmd
+Délai : A rendre avant 16h30 le jour même
+
+Les calculs doivent au maximum être dans MongoDB. 
+
+## Sujet
+
+Nous allons utiliser la base de données `test`, dans laquelle se trouve la collection `restaurants`. Celle-ci est composée de plus de 25000 retaurants new-yorkais, avec des évaluations de ceux-ci.
+
+1. Créer une connexion vers cette collection
+1. Déterminer le nombre exact de restaurants.
+1. Lister les différents quartiers représentés (borough) ainsi que les différents types de cuisine (cuisine).
+1. Lister les noms des restaurants, ainsi que leur quartier, ne proposant que des soupes (cuisine égale à Soups).
+1. Donner les nombre de restaurants ayant eu au moins une fois le grade (dans grades) Z.
+1. Calculer le nombre de restaurants pour chaque quartier
+1. Donner les cinq types de cuisine les plus présentes dans New-York (avec le plus de restaurants donc)
+1. Pour chaque grade possible, donner le nombre d'évaluation avec ce grade, ainsi que le score moyen, minimum et maximum.
+1. Créer un DataFrame contenant les restaurants en ligne et en colonne le score moyen obtenu pour chaque grade possible. Si un restaurant n'a pas eu d'évaluation d'un grade, nous aurons une valeur absente.

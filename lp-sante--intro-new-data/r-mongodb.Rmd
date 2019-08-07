@@ -1,0 +1,244 @@
+---
+title: Connexion entre `R` et MongoDB
+output:
+    html_document:
+        toc: true
+        toc_float: true
+        toc_depth: 3
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+Dans ce document est l'utilisation du package [`mongolite`](https://jeroen.github.io/mongolite/) permettant la connection à une base de données [MongoDB](https://www.mongodb.com/fr).
+
+## Connexion
+
+Pour interroger MongoDB dans `R`, il faut créer une connexion entre les deux. Ici, je créée une connexion à un serveur distant. 
+
+```{r}
+library(mongolite)
+conSportifs = mongo(collection = "Sportifs", db = "gym", url = "mongodb://193.51.82.104:2343")
+conGymnases = mongo(collection = "Gymnases", db = "gym", url = "mongodb://193.51.82.104:2343")
+```
+
+L'objet ainsi créé contient un ensemble de fonctions permettant l'accès aux données de MongoDB.
+
+## Récupération d'informations simples
+
+Une fois cette connexion créée, il est possible de regarder quelles sont les bases de données contenues, ainsi que les collections présentes dans ces BD. .
+
+```{r}
+# Nombre d'enregistrement de la collection Sportifs de la BD gym
+conSportifs$count()
+```
+
+### Premier enregistrement d'une collection
+
+Dans Mongo, il n'y a pas de schéma pour une base de données, ni même pour une collection. Un moyen de s'approprier les données est donc de regarder le premier élément. C'est pourquoi il existe la fonction `find()` avec le paramètre `limit`. Cette fonction transforme le résultat en `data.frame`, ce qui n'est pas forcément désiré. Il existe donc la fonction `iterate()`, qui renvoie un curseur dans lequel il est possible de naviguer avec la fonction `one()` (renvoie les éléments un par un) ou la fonction `batch()` (renvoie tous les éléments en une liste).
+
+```{r}
+# Premier enregistrement de la collection Sportifs de la BD gym
+conSportifs$find(limit = 1)
+# Idem mais conservé en liste
+conSportifs$iterate(limit = 1)$one()
+conSportifs$iterate(limit = 1)$batch()
+conSportifs$iterate(limit = 1)$page()
+```
+
+Sur cet enregistrement, on peut vouloir avoir accès aux données directement. Voici comment faire avec soit le retour de `find()`, soit le retour de `iterate()`
+
+```{r}
+# Avec find(limit = 1)
+enr1 = conSportifs$find(limit = 1)
+enr1$Nom
+enr1$Sports
+# Avec iterate(limit = 1)$one()
+enr1bis = conSportifs$iterate(limit = 1)$one()
+enr1bis$Nom
+enr1bis$Sports
+```
+
+### Valeurs distinctes d'un élément d'une collection
+
+Puisqu'on n'a pas de schéma, on peut aussi vouloir avoir la liste des valeurs prises par un élément particulier.
+
+```{r}
+# Liste des valeurs prises par l'élement Sexe dans tous les enregistrements de gym.Sportifs
+conSportifs$distinct("Sexe")
+```
+
+## Interrogation de données
+
+On fait référence ici aussi à l'interrogation de type `SQL`, mais dans un environnement NoSQL (sans schéma explicite, sans stricte égalité de schéma entre les enregistrements, sans jointure).
+
+### Restriction et projection 
+
+La fonction `find()` permet de renvoyer tous les enregistements par défaut. Il faut donc la manipuler prudemment si on en a beaucoup. Il est possible d'indiquer dans celle-ci les restrictions et/ou projections que l'on souhaite faire.
+
+Pour effectuer une restriction, on utilise le paramètre `query` de la fonction `find()`. Cette requête doit être une chaîne de caractère, et dans le même format que dans le langage `JS` de la console Mongo.
+
+```{r}
+conSportifs$find(query = '{"Sexe": "m"}')
+conSportifs$find(query = '{"Sexe": "F", "Age": { "$lte": 22 }}')
+```
+
+La projection se fait avec le paramètre `fields`, recevant une chaîne de caractère, au format du langage console de Mongo. Ici, on n'affiche que les premières lignes du résultat.
+
+```{r}
+head(conSportifs$find(fields = '{"_id": 0, "Nom": 1}'))
+```
+
+Il est bien évidemment possible de combiner ces deux paramètres pour faire les deux opérations.
+
+```{r}
+conSportifs$find(query = '{"Sexe": "F", "Age": { "$lte": 22 }}',
+                 fields = '{"_id": 0, "Nom": 1, "Prenom": 1, "Age": 1, "Sexe": 1}')
+```
+
+On peut ajouter un tri sur le résultat.
+
+```{r}
+conSportifs$find(query = '{"Sexe": "F", "Age": { "$lte": 23 }}',
+                 fields = '{"_id": 0, "Nom": 1, "Prenom": 1, "Age": 1, "Sexe": 1}',
+                 sort = '{"Age": -1, "Nom": 1}')
+```
+
+
+### Traitement par document
+
+Comme indiqué précédemment, la fonction `iterate()` permet de traiter les documents un par un dans `R`. Dans ce cas, soit on utilise le curseur que l'on vide avec la fonction `one()`, jusqu'à ce qu'il retourne la valeur `NULL`. 
+
+```{r}
+it = conGymnases$iterate()
+while (!is.null(doc <- it$one())) {
+  print(sprintf("%s, %s (%i m2) : %i séances", 
+                doc$NomGymnase, doc$Ville, doc$Surface, length(doc$Seances)))
+}
+```
+
+Soit on utilise la fonction `batch()` pour récupérer tous les éléments dans une liste.
+
+```{r}
+sapply(conGymnases$iterate()$batch(),
+       function (e) {
+           return(c(Nom = e$NomGymnase, Ville = e$Ville,
+                    NbSeances = length(e$Seances)))
+       })
+```
+
+### Agrégat
+
+Les agrégats sont effectués avec la fonction `aggregate()`, dans laquelle on définit un `pipeline` sous forme de `list`, avec une syntaxe proche de celle de Mongo. Les variables de regroupement sont celles indiquées dans le `_id` de l'élement `$group`. Si la valeur est `null`, il regroupe tous les enregistrements.
+
+```{r}
+conSportifs$aggregate('[{"$group": { "_id": "null", "AgeMoyen": { "$avg": "$Age" }, "Nb": { "$sum": 1 } } }]')
+```
+
+Par contre, si on indique une variable (ici `Sexe` par exemple), il fait le regroupement par modalité, classiquement.
+
+```{r}
+conSportifs$aggregate('[{"$group": { "_id": "$Sexe", "AgeMoyen": { "$avg": "$Age" }, "Nb": { "$sum": 1 } } }]')
+```
+
+On remarque ici qu'il y a la modalité `m` et la modalité `M`. Pour mettre en majuscule, on peut le définir directement dans la définition de `_id`.
+
+```{r}
+conSportifs$aggregate('[{"$group": { "_id": { "$toUpper" : "$Sexe" }, "AgeMoyen": { "$avg": "$Age" }, "Nb": { "$sum": 1 } } }]')
+```
+
+
+### Calcul
+
+Pour créer des nouveaux éléments dans un enregistrement, il est nécessaire d'utiliser la fonction d'aggrégation, avec `$project`.
+
+```{r eval=FALSE}
+conSportifs$aggregate('[{
+                    "$project": {
+                      "_id": 0,
+                      "Nom": 1,
+                      "Prenom": { "$toLower": "$Prenom" },
+                      "Sexe": { "$toUpper": "$Sexe" }
+                    }
+                  }]'
+)
+```
+
+### Recherche complexe
+
+Cette commande d'agrégation sert aussi à faire des recherches compexes dans les sous-éléments présents dans les enregistrements.
+
+Par exemple, dans la collection `Gymnases`, nous avons la liste des séances avec les jours et les sports. Si on cherche les jours et les gymnases où il y a des séances de `Hand ball`, la recherche simple comme suit ne suffit pas. On obtient bien les informations voulues, mais on a aussi les séances des gymnases pour les autres sports.
+
+```{r eval=FALSE}
+conGymnases$iterate(
+  query = '{ "Seances.Libelle": "Hand ball" }',
+  fields = '{ 
+    "_id": 0, "NomGymnase": 1, "Ville": 1, "Seances.Jour": 1, "Seances.Libelle": 1 
+  }'
+)$batch()
+```
+
+Pour résoudre ce problème, nous allons utilisons la fonction d'aggrégation, avec la commande `$unwind`. Celle-ci permet de séparer les éléments du tableau passé en paramètre. Ici, d'un enregistrement par gymnase, on passe à un enregistrement par gymnase et par séance.
+
+```{r}
+head(conGymnases$aggregate('[{ "$unwind": "$Seances" }]'))
+```
+
+Dans le `pipeline`, on peut aussi ajouter des restrictions, avec la commande `$match`. On peut mettre celui-ci avant et/ou après le `$unwind`. Et choisir les éléments retournés avec `$project`. Pour répondre à la question *jours et gymnases où il y a des séances de `Hand ball`*, on peut faire ainsi :
+
+```{r}
+conGymnases$aggregate('[
+    { "$match": { "Seances": { "$elemMatch": { "Libelle": "Hand ball" } } } },
+    { "$unwind": "$Seances" },
+    { "$match": { "Seances.Libelle": "Hand ball"} },
+    { 
+      "$group": { 
+        "_id": "$NomGymnase", 
+        "Jours" : { "$addToSet": { "$toLower": "$Seances.Jour" } } ,
+        "Sports" : { "$addToSet": "$Seances.Libelle" }
+      } 
+    }]'
+)
+```
+
+## A faire
+
+### Données `gym`
+
+Refaire quelques demandes précédemment faites en `R`.
+
+### Trafic parisien
+
+Nous allons utiliser la base de données `trafic`, dans laquelle il y a
+trois collections :
+
+- `capteurs` : liste des capteurs permanents
+https://opendata.paris.fr/explore/dataset/referentiel-comptages-routiers/information/
+- `capteurs_geo` : idem, mais au format GeoJson (qu'on ne va pas utiliser a priori)
+- `trafic` : débit et taux d'occupation par heure sur les différents capteurs
+https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/
+
+Répondre aux questions suivantes :
+
+- Afficher le premier document des collections `capteurs` et `trafic`, ainsi que le nombre de documents existants
+- Calculer le nombre de mesures de trafic 
+    - par année
+    - par mois
+    - par jour de la semaine
+- Récupérer les coordonnées (point) de chaque capteur, puis les
+afficher sur une carte
+- Récupérer les débits et les taux d'occupation du capteur ?, et
+afficher les évolutions
+    - depuis le début
+    - par année (une couleur par année)
+    - moyenne journalière globale
+    - moyenne sur une journée (par heure donc) par mois
+    - moyenne sur une journée (par heure donc) par jour de la semaine
+    - cumul des deux informations sur un même graphique
+- Récupérer les coordonnées du tronçon de chaque capteur, puis les
+afficher sur une carte
+
+
+
