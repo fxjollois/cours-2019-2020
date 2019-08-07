@@ -9,9 +9,12 @@
 <!--
     - [correction](mongodb-correction.js)
 -->
+
 - [Interrogation MongoDB dans R](r-mongodb.html)
 <!--
     - [correction](r-mongodb-correction.R)
-    
+-->
+
+<!--
 [TP noté](tpnote.html)
 -->
