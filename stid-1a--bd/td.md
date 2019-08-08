@@ -1,3 +1,0 @@
-# Exploitation de données
-
-## TD

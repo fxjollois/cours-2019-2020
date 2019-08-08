@@ -3,7 +3,7 @@
 ## Département STID, IUT Paris Descartes
 
 - DUT STID 1ère année
-    - [Bases de données](stid-1a--bd/)
+    - [Bases de données](stid-1a--bd)
 - DUT STID 2ème année (en alternance)
     - [SID](stid-2afa--sid/)
     - [Travaux de fin d'études](stid-2afa--tfe)

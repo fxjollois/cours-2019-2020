@@ -3,9 +3,7 @@
 
 ## Déroulement
 
-- Première séance
-    - [Cours](cours-bd.html)
-    - [TD](td)
+- [Première séance](https://docs.google.com/presentation/d/1FVMyIxTEG1SJSn3YJR8mvM5Trs-D6nwZALlwqOYQxns/edit?usp=sharing)
 - Séances suivantes :
     - sur l'[application web](http://fxjollois.github.io/cours-sql) développée spécifiquement pour le cours d'**Exploitation de données** de STID 1ère année.
 
