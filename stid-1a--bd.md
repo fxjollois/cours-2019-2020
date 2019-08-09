@@ -4,8 +4,7 @@
 ## Déroulement
 
 - [Première séance](https://docs.google.com/presentation/d/e/2PACX-1vQSy4o2wWe3arD9jwSOzaqW-huL9dVrBH26hKH8JQ1PGoBF83ODpZI2MCM4xiGxXymdS5JlB-vpJHG5/pub?start=false&loop=true&delayms=3000)
-- Séances suivantes :
-    - sur l'[application web](http://fxjollois.github.io/cours-sql) développée spécifiquement pour le cours d'**Exploitation de données** de STID 1ère année.
+- Séances suivantes sur l'[application web](http://fxjollois.github.io/cours-sql) développée spécifiquement pour le cours d'**Exploitation de données** de STID 1ère année.
 
 ## Liens intéressants :
 
