@@ -14,7 +14,5 @@
     - [sql.sh](http://sql.sh/) : Cours et tutoriels sur le langage SQL
     - Partie SQL sur [developpez.com](http://sql.developpez.com/)
     - [W3schools](http://www.w3schools.com/sql/) : en anglais avec possibilité de traduction
-- Logiciels :
-    - [SQLite](https://www.sqlite.org/) et [SQLite Browser](http://sqlitebrowser.org/)
-    - [SAS](http://www.sas.com/fr_fr/home.html)
-    - [R](https://www.r-project.org/)
+- Logiciel [SQLite](https://www.sqlite.org/) et [SQLite Browser](http://sqlitebrowser.org/)
+
