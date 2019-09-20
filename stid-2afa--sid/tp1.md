@@ -1,6 +1,11 @@
 # Rappels de SQL
 
-Nous utiliserons SAS pour réaliser les requêtes SQL sur le data-mart [ca.mdb](https://fxjollois.github.io/donnees/ca/ca.mdb) (à télécharger donc). Celui-ci représente le chiffre d'affaires (CA) d'une entreprise en fonction de 3 dimenions (provenance, mois et département - ces deux dernières comprenant une hiérarchie).
+Nous utiliserons SAS pour réaliser les requêtes SQL sur le data-mart **CA**. Celui-ci représente le chiffre d'affaires (CA) d'une entreprise en fonction de 3 dimenions (provenance, mois et département - ces deux dernières comprenant une hiérarchie). Voici les 4 tables le contenant (avec les liens pour les téléchargér).
+
+- [CA](https://fxjollois.github.io/donnees/ca/csv/ca.csv)
+- [Mois](https://fxjollois.github.io/donnees/ca/csv/mois.csv)
+- [Groupe](https://fxjollois.github.io/donnees/ca/csv/groupe.csv)
+- [Provenance](https://fxjollois.github.io/donnees/ca/csv/provenance.csv)
 
 Pour lancer une requête sur cette base dans SAS, vous devez d'abord charger la BD comme étant une nouvelle librairie.
 
@@ -19,6 +24,7 @@ QUIT;
 
 ## Répondez aux demandes suivantes en utilisant exclusivement la PROC SQL
 
+1. Ecrire le programme permettant d'importer les 4 tables dans une librairie dédié au data-mart (qui se situera sur votre espace personnel)
 1. Créer une vue comprenant l'ensemble des informations contenus dans les 4 tables, que vous nommerez `CA_ALL`
 1. Lister les groupes du département `"Ménage"`
 1. Combien de département ont un sous-groupe nommé "Divers" ? idem mais avec le mot "divers" dedans ?
