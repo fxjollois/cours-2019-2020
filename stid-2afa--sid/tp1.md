@@ -7,13 +7,7 @@ Nous utiliserons SAS pour réaliser les requêtes SQL sur le data-mart **CA**. C
 - [Groupe](https://fxjollois.github.io/donnees/ca/csv/groupe.csv)
 - [Provenance](https://fxjollois.github.io/donnees/ca/csv/provenance.csv)
 
-Pour lancer une requête sur cette base dans SAS, vous devez d'abord charger la BD comme étant une nouvelle librairie.
-
-```sas
-libname ca  access '/chemin/vers/fichier/ca.mdb';
-```
-
-Puis, pour exécuter une requête, vous devez utiliser donc la procédure `SQL`, comme dans l'exemple ci-dessous. Attention, cette procédure est dite interactive, il faut donc la quitter (avec `QUIT;`) pour la terminer.
+Pour exécuter une requête, vous devez utiliser donc la procédure `SQL`, comme dans l'exemple ci-dessous. Attention, cette procédure est dite interactive, il faut donc la quitter (avec `QUIT;`) pour la terminer.
 
 ```sas
 PROC SQL outobs = 10;
@@ -24,7 +18,7 @@ QUIT;
 
 ## Répondez aux demandes suivantes en utilisant exclusivement la PROC SQL
 
-1. Ecrire le programme permettant d'importer les 4 tables dans une librairie dédié au data-mart (qui se situera sur votre espace personnel)
+1. Ecrire le programme permettant d'importer les 4 tables dans une librairie (nommé idéalement `"CA"`) dédié au data-mart (qui se situera sur votre espace personnel)
 1. Créer une vue comprenant l'ensemble des informations contenus dans les 4 tables, que vous nommerez `CA_ALL`
 1. Lister les groupes du département `"Ménage"`
 1. Combien de département ont un sous-groupe nommé "Divers" ? idem mais avec le mot "divers" dedans ?
