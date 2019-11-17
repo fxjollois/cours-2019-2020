@@ -16,7 +16,7 @@ Le schéma de l'entrepôt est constitué des tables suivantes (les clés primair
 
 1. Quelle est la table de fait dans cet entrepôt ? Justifiez !
 2. Dessiner le modèle de données en expliquant le ou le(s) tables de faits et de dimensions.
-3. A votre avis, il y a t'il des dimensions dégénérées dans cet entrepôt ? Rappelez la définition et justifiez.
+3. A votre avis, y a t'il des dimensions dégénérées dans cet entrepôt ? Rappelez la définition et justifiez.
 4. Donnez les nouvelles tables si on décide de diminuer la taille de la table **Assurée** par une mini-dimension démographique.
 5. Donner le script SQL de création des tables (ne pas oublier les clés primaires).
 
@@ -24,23 +24,23 @@ Le schéma de l'entrepôt est constitué des tables suivantes (les clés primair
 
 | Information | Valeur |
 | - | -: |
-| Nombre dhassurés                                     | 60 Millions |
-| Nombre de actes par praticien et par jour            | 20 |
-| Nombre de jours de travail d'un praticien            | 300 jours par an |
-| Nombre de praticiens                                 | 300 000 |
-| Montant total moyen d'un acte                        | 100 € |
-| Nombre d'actes supplémentaires prescrit par acte     | 0.1 |
-| Nombre d'années                                      | 6 |
-| Coûts annuel des actes                               | 180 Milliard € |
-| Taille des clés                                      | 4 octets |
-| Taille des attributs numériques                      | 4 octets |
-| Taille des attributs booléens (comme les drapeaux !) | 1 octet |
+| Nombre d'assurés                                       | 60 Millions |
+| Nombre d'actes par praticien et par jour               | 20 |
+| Nombre de jours de travail d'un praticien              | 300 jours par an |
+| Nombre de praticiens                                   | 300 000 |
+| Montant total moyen d'un acte                          | 100 € |
+| Nombre moyen d'actes supplémentaires prescrit par acte | 0.1 |
+| Nombre d'années                                        | 6 |
+| Coûts annuel des actes                                 | 180 Milliard € |
+| Taille des clés                                        | 4 octets |
+| Taille des attributs numériques                        | 4 octets |
+| Taille des attributs booléens (comme les drapeaux !)   | 1 octet |
 
 1. Donnez le nombre de faits présents dans la table de fait.
 1. Estimez la taille (en octet) de celle-ci.
 
-## Rapports dhanalyse (SQL)
+## Rapports d'analyse (SQL)
 
-1. Donnez la requête SQL qui donne le top 10 des sous-spécialités des pathologies qui ont entraîné le plus de dépenses (montant des actes + montant pharmacologies)?
+1. Donnez la requête SQL qui donne le top 10 des sous-spécialités des pathologies qui ont entraîné le plus de dépenses (montant des actes + montant pharmacologies) ?
 1. Donnez le rapport mensuel de progression du ratio des montants des médicament génériques par rapport aux médicaments non génériques.
 1. Donnez le rapport précédent mais avec une moyenne glissante sur les 3 mois précédents.
