@@ -11,7 +11,7 @@ Il est possible de se connecter à un SI sous R, en grande partie grâce au pack
 ```r
 library(DBI)
 cpt = dbConnect(RSQLite::SQLite(), "Comptoir2000.sqlite")
-dbListTables(con)
+dbListTables(cpt)
 dbDisconnect(cpt)
 ```
 
