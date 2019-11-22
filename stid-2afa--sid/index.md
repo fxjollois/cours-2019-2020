@@ -7,5 +7,5 @@
     
 - [TD Modélisation multidimensionnelle](td1)
 
-- Intégration de données
+- [TP Intégration de données sous R](tp3)
 - Restitution d'informations
