@@ -49,7 +49,7 @@ Ici, notre SI opérationnel est la base `Comptoir2000`, et au format `SQLite` do
 Pour créer le data-mart, contenant les 2 processus vus en cours, vous devez donc faire les étapes suivantes :
 
 1. Créer les tables dans le SID
-1. Impporter les tables dans R
+1. Importer les tables dans R
 1. Calculer les nouvelles tables
 1. Charger les données dans le SID
 
