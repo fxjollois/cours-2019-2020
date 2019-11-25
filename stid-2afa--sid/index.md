@@ -8,4 +8,7 @@
 - [TD Modélisation multidimensionnelle](td1)
 
 - [TP Intégration de données sous R](tp3)
+    - [Correction partie integration](tp3-integration.zip) (fichier zip avec 4 scripts R)
+
+
 - Restitution d'informations
