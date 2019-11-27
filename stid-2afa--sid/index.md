@@ -6,6 +6,7 @@
     - [Modélisation multidimensionnelle](tp2)
     
 - [TD Modélisation multidimensionnelle](td1)
+    - [Correction](td1-correction)
 
 - [TP Intégration de données sous R](tp3)
     - [Correction partie integration](tp3-integration.zip) (fichier zip avec 4 scripts R)

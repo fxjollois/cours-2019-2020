@@ -7,9 +7,9 @@ Le Ministère de la Santé et du Bien-Etre vous sous-traite la réalisation d'un
 Le schéma de l'entrepôt est constitué des tables suivantes (les clés primaires sont en italiques)
 
 - **Date** (*CléDate*, Année, Mois, JourDeMois, JourDeSemaine, TrancheHoraire, DrapeauVacances)
-- **Acte** (*CléDate, CléAssuré, CléPraticien, CléPathologie*, MontantActes, MontantDesActesComplémentaires, MontantPriseEnChargeCaissePrimaire, MontantPriseEnChargeCaisseComplémentaire, NombreMedicamentsPrescrits, MontantPharmacologieGénérique,MontantPharmacologieNonGenerique, DrapeauActesComplémentairesBiologie, DrapeauActesComplémentairesChirurgie, DrapeauActesComplémentairesRadiologie, DrapeauActesComplémentairesKinésithérapie, DrapeauActesComplémentairesRadiologie, NombreDeJoursDArrêtDeTravail, CoutJoursDArret)
+- **Acte** (*CléDate, CléAssuré, CléPraticien, CléPathologie*, MontantActes, MontantDesActesComplémentaires, MontantPriseEnChargeCaissePrimaire, MontantPriseEnChargeCaisseComplémentaire, NombreMedicamentsPrescrits, MontantPharmacologieGénérique, MontantPharmacologieNonGenerique, DrapeauActesComplémentairesBiologie, DrapeauActesComplémentairesChirurgie, DrapeauActesComplémentairesRadiologie, DrapeauActesComplémentairesKinésithérapie, DrapeauActesComplémentairesRadiologie, NombreDeJoursDArrêtDeTravail, CoutJoursDArret)
 - **Assuré** (*CléAssuré*, MoisNaissance, AnnéeNaissance, MoisDécès, AnnéeDécès, Région, Département, District, Ville, Quartier, RevenuAssuré, RevenuFoyer, CatégorieSocioProfessionnel, SousCatégorieSocioProfessionnel, DomaineActivité, CaissePrimaire, CaisseComplémentaire, DrapeauAssuréPrincipal)
-- **Pratitien** (*CléPraticien*, Spécialité, SousSpécialité, Région, Département, District, Ville, Quartier, MoisNaissance, AnnéeNaissance, DrapeauConventionné)
+- **Praticien** (*CléPraticien*, Spécialité, SousSpécialité, Région, Département, District, Ville, Quartier, MoisNaissance, AnnéeNaissance, DrapeauConventionné)
 - **Pathologie** (*CléPathologie*, DesignationNormalisé, Spécialité, SousSpécialité, TauxDIncapacité, DuréeTraitement, Chronicité, DrapeauMaladieProfessionnelle)
 
 ## Rétro-Conception
