@@ -6,7 +6,7 @@
 
 #### Quelle est la table de fait dans cet entrepôt ? Justifiez !
 
-C'est la table **`Acte`*** : seule table avec clés externes pointant sur les autres tables + présence d'attributs numériques correspondant à des indicateurs (par exemple des montants).
+C'est la table **`Acte`** : seule table avec clés externes pointant sur les autres tables + présence d'attributs numériques correspondant à des indicateurs (par exemple des montants).
 
 #### Dessiner le modèle de données en expliquant le ou le(s) tables de faits et de dimensions.
 
@@ -125,15 +125,19 @@ CREATE TABLE ACTE (
 
 Pour faire ce calcul, on utilise la formule qui suit, avec les valeurs suivantes :
 
-- $Nb_{actes}$ : nombre d'actes par jour de travail, et par praticien (20)
-- $Nb_{praticiens}$ : nombre de praticiens (300000)
-- $Nb_{jours}$ : nombre de jours de travail d'un praticien au cours d'une année (300)
-- $Nb_{années}$ : nombre d'années de suivi du data-mart (6)
+- `Nb_actes` : nombre d'actes par jour de travail, et par praticien (20)
+- `Nb_praticiens` : nombre de praticiens (300000)
+- `Nb_jours` : nombre de jours de travail d'un praticien au cours d'une année (300)
+- `Nb_années` : nombre d'années de suivi du data-mart (6)
 
-\begin{eqnarray*} 
-Nb_{actes} \times Nb_{praticiens} \times Nb_{jours} \times Nb_{années} &=& 20 \times 300000 \times 300 \times 6\\
-&=& 10.8 \mbox{ milliards de lignes}
-\end{eqnarray*}
+
+```
+Taille = Nb_actes * Nb_praticiens * Nb_jours * Nb_années
+       = 20 * 300000 * 300 * 6
+       = 10.8 milliards de lignes
+```
+
+
 
 La table finale fera donc normalement **10.8** milliards de lignes.
 
@@ -145,7 +149,7 @@ Dans la table de faits, il y a donc en tout :
 - 9 attributs numériques de 4 octets chacun
 - 5 attributs booléens de 1 octet chacun
 
-Une ligne fait donc $4*4+9*4+5*1=57$ octets en tout. La table fera donc **615.6** Go (selon la nouvelle norme : 1 Go = 1000 Mo, 1 Mo = 1000 Ko, 1 Ko = 1000 o - cf [cette page](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_mesure_en_informatique) pour plus d'informations).
+Une ligne fait donc `4 * 4 + 9 * 4 + 5 * 1 = 57` octets en tout. La table fera donc **615.6** Go (selon la nouvelle norme : 1 Go = 1000 Mo, 1 Mo = 1000 Ko, 1 Ko = 1000 o - cf [cette page](https://fr.wikipedia.org/wiki/Unit%C3%A9_de_mesure_en_informatique) pour plus d'informations).
 
 ## Rapports d'analyse (SQL)
 
@@ -189,7 +193,7 @@ CREATE VIEW RATIOMOIS AS
         ORDER BY D.Année, D.Mois;
 ```
 
-Ensuite, pour faire la jointure entre la vue (nommée `R1`) et elle-même (`R2`), et pour faire correspondre un mois de `R1` aux trois mois de `R2` (le même et les 2 précédents), on calcule le nombre de mois depuis l'an 0 (simple à faire : $Nb_{années} \times 12 + Nb_{mois}$). Ensuite, il faut que la différence entre les 2 soit comprise entre 0 (même mois) et 2 (deux mois avant). 
+Ensuite, pour faire la jointure entre la vue (nommée `R1`) et elle-même (`R2`), et pour faire correspondre un mois de `R1` aux trois mois de `R2` (le même et les 2 précédents), on calcule le nombre de mois depuis l'an 0 (simple à faire : `Nb_années * 12 + Nb_mois`). Ensuite, il faut que la différence entre les 2 soit comprise entre 0 (même mois) et 2 (deux mois avant). 
 
 ```sql
 SELECT R1.Année, R1.Mois,
