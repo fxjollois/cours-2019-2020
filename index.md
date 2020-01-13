@@ -13,6 +13,12 @@
 - DU Dataviz
     - [Introduction à d3.js](du-dataviz--d3js)    
 
+## Département Informatique, IUT Paris Descartes
+
+- LP IoT
+    - [Analyse Statistique des Données](https://github.com/fxjollois/cours-2019-2020/blob/master/lp-iot--python-ds/index.md)
+
+
 ## UFR Math-Info
 
 - Master 1
