@@ -4,7 +4,7 @@ output: html_document
 ---
 
 ```{r, include=FALSE}
-knitr::opts_chunk$set(eval = TRUE)
+knitr::opts_chunk$set(eval = FALSE)
 ```
 
 Dans ce document est l'utilisation du package [`mongolite`](https://jeroen.github.io/mongolite/) permettant la connection à une base de données [MongoDB](https://www.mongodb.com/fr).
@@ -111,12 +111,11 @@ On peut interroger une base de données de ce type via le package `mongolite` da
 
 ```{r}
 library(mongolite)
-m = mongo(url = "mongodb://193.51.82.104:2343",
-          db = "test",
+m = mongo(db = "test",
           collection = "restaurants")
 ```
 
-Le premier document est présenté ci-dessous. La base contient les informations de `r m$count()` restaurants (base de test fournie par [Mongo](https://docs.mongodb.com/getting-started/shell/import-data/)).
+Le premier document est présenté ci-dessous. La base contient les informations de plus de 25000 restaurants (base de test fournie par [Mongo](https://docs.mongodb.com/getting-started/shell/import-data/)).
 
 ```{r, echo = FALSE}
 jsonlite::toJSON(m$iterate(limit = 1)$one(), pretty = T)
