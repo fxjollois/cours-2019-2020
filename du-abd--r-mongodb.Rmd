@@ -406,40 +406,38 @@ leaflet(restos.coord) %>%
 
 ## A faire
 
+
+### Rendu
+
+Envoyez votre fichier (script `R` ou markdown `Rmd` - avec votre nom dans le nom du fichier) par mail à **francois-xavier.jollois@u-paris.fr**.
+
+
 ### Restaurants 
 
-1. Lister tous les restaurants de la chaîne "Burger King" (rue, quartier)
+1. Lister tous les restaurants de la chaîne "Bareburger" (rue, quartier)
 1. Lister les trois chaînes de restaurant les plus présentes
-1. Lister les 10 restaurants les mieux notés (note moyenne la plus faible)
+1. Lister les 10 restaurants les moins bien notés (note moyenne la plus haute)
 1. Lister par quartier le nombre de restaurants, le score moyen et le pourcentage moyen d'évaluation A
 1. Afficher les restaurants sur une carte en mettant une couleur en fonction de la note moyenne des restaurants
 
-### Trafic parisien
+### Horodateurs parisien
 
-Nous allons utiliser la base de données `trafic`, dans laquelle il y a trois collections :
+Nous allons découvrir dans ce TP les [données utilisées](https://opendata.paris.fr/explore/dataset/horodateurs-transactions-de-paiement/) dans le projet à rendre, qui sont l'ensemble des **transactions sur les horodateurs** dans la ville de **Paris** sur l'année **2014**. Celles-ci proviennent du site [Open Data Paris](https://opendata.paris.fr/), répertoire des données ouvertes de la ville de Paris. Elles sont stockées sur le serveur MongoDB déjà utilisé, dans la base horodateurs.
 
-- `capteurs` : liste des capteurs permanents
-https://opendata.paris.fr/explore/dataset/referentiel-comptages-routiers/information/
-- `capteurs_geo` : idem, mais au format GeoJson (qu'on ne va pas utiliser a priori)
-- `trafic` : débit et taux d'occupation par heure sur les différents capteurs
-https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/
+Elle contient trois collections importantes :
 
-Répondre aux questions suivantes :
+- `transactions` : ensemble des paiements
+- `transactions_small` : 1% des paiements (à utiliser avant de lancer sur un calcul sur `transactions`)
+- `mobiliers` : liste de tous les horodateurs
 
-1. Afficher le premier document des collections `capteurs` et `trafic`, ainsi que le nombre de documents existants
-1. Calculer le nombre de mesures de trafic 
-    1. par année
-    1. par mois
-    1. par jour de la semaine
-1. Récupérer les coordonnées (point) de chaque capteur, puis les afficher sur une carte
-1. Récupérer les débits et les taux d'occupation du capteur 6756, et afficher les évolutions (avec `ggplot2`)
-    1. depuis le début
-    1. par année (une couleur par année)
-    1. moyenne journalière globale
-    1. moyenne sur une journée (par heure donc) par mois
-    1. moyenne sur une journée (par heure donc) par jour de la semaine
-    1. mélange des deux informations sur un même graphique
-1. Récupérer les coordonnées du tronçon de chaque capteur, puis les afficher sur une carte
-
-
+1. Lister les informations du premier mobilier
+1. Donner le nombre de mobiliers
+1. Lister les informations de la première transaction
+1. Donner le nombre de transactions
+1. Lister les informations du mobilier `1234` (cf `objectid`)
+1. Donner le nombre de mobiliers pour chaque arrondissement (`arrondt`)
+1. Croiser le régime (`regime`) et les arrondissements pour voir s'il y a des différences notables (idéalement en réalisant un graphique avec `ggplot`)
+1. Donner la distribution des montants payés (`montant carte`) et des durées payées (`durée payée (h)`) des transactions
+1. Représenter le nombre de transactions par arrondissement (la jointure se faire entre `horodateur` dans `mobiliers` et `numhoro` dans `transactions`)
+1. Représenter chaque mobilier sur la carte de Paris, en ajoutant une couleur en fonction du nombre de transactions réalisées durant l'année
 

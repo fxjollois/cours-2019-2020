@@ -699,44 +699,40 @@ leaflet(restos.coord) %&gt;%
 </div>
 <div id="a-faire" class="section level2">
 <h2>A faire</h2>
+<div id="rendu" class="section level3">
+<h3>Rendu</h3>
+<p>Envoyez votre fichier (script <code>R</code> ou markdown <code>Rmd</code> - avec votre nom dans le nom du fichier) par mail à <strong><a href="mailto:francois-xavier.jollois@u-paris.fr" class="email">francois-xavier.jollois@u-paris.fr</a></strong>.</p>
+</div>
 <div id="restaurants" class="section level3">
 <h3>Restaurants</h3>
 <ol style="list-style-type: decimal">
-<li>Lister tous les restaurants de la chaîne “Burger King” (rue, quartier)</li>
+<li>Lister tous les restaurants de la chaîne “Bareburger” (rue, quartier)</li>
 <li>Lister les trois chaînes de restaurant les plus présentes</li>
-<li>Lister les 10 restaurants les mieux notés (note moyenne la plus faible)</li>
+<li>Lister les 10 restaurants les moins bien notés (note moyenne la plus haute)</li>
 <li>Lister par quartier le nombre de restaurants, le score moyen et le pourcentage moyen d’évaluation A</li>
 <li>Afficher les restaurants sur une carte en mettant une couleur en fonction de la note moyenne des restaurants</li>
 </ol>
 </div>
-<div id="trafic-parisien" class="section level3">
-<h3>Trafic parisien</h3>
-<p>Nous allons utiliser la base de données <code>trafic</code>, dans laquelle il y a trois collections :</p>
+<div id="horodateurs-parisien" class="section level3">
+<h3>Horodateurs parisien</h3>
+<p>Nous allons découvrir dans ce TP les <a href="https://opendata.paris.fr/explore/dataset/horodateurs-transactions-de-paiement/">données utilisées</a> dans le projet à rendre, qui sont l’ensemble des <strong>transactions sur les horodateurs</strong> dans la ville de <strong>Paris</strong> sur l’année <strong>2014</strong>. Celles-ci proviennent du site <a href="https://opendata.paris.fr/">Open Data Paris</a>, répertoire des données ouvertes de la ville de Paris. Elles sont stockées sur le serveur MongoDB déjà utilisé, dans la base horodateurs.</p>
+<p>Elle contient trois collections importantes :</p>
 <ul>
-<li><code>capteurs</code> : liste des capteurs permanents <a href="https://opendata.paris.fr/explore/dataset/referentiel-comptages-routiers/information/" class="uri">https://opendata.paris.fr/explore/dataset/referentiel-comptages-routiers/information/</a></li>
-<li><code>capteurs_geo</code> : idem, mais au format GeoJson (qu’on ne va pas utiliser a priori)</li>
-<li><code>trafic</code> : débit et taux d’occupation par heure sur les différents capteurs <a href="https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/" class="uri">https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/</a></li>
+<li><code>transactions</code> : ensemble des paiements</li>
+<li><code>transactions_small</code> : 1% des paiements (à utiliser avant de lancer sur un calcul sur <code>transactions</code>)</li>
+<li><code>mobiliers</code> : liste de tous les horodateurs</li>
 </ul>
-<p>Répondre aux questions suivantes :</p>
 <ol style="list-style-type: decimal">
-<li>Afficher le premier document des collections <code>capteurs</code> et <code>trafic</code>, ainsi que le nombre de documents existants</li>
-<li>Calculer le nombre de mesures de trafic
-<ol style="list-style-type: decimal">
-<li>par année</li>
-<li>par mois</li>
-<li>par jour de la semaine</li>
-</ol></li>
-<li>Récupérer les coordonnées (point) de chaque capteur, puis les afficher sur une carte</li>
-<li>Récupérer les débits et les taux d’occupation du capteur 6756, et afficher les évolutions (avec <code>ggplot2</code>)
-<ol style="list-style-type: decimal">
-<li>depuis le début</li>
-<li>par année (une couleur par année)</li>
-<li>moyenne journalière globale</li>
-<li>moyenne sur une journée (par heure donc) par mois</li>
-<li>moyenne sur une journée (par heure donc) par jour de la semaine</li>
-<li>mélange des deux informations sur un même graphique</li>
-</ol></li>
-<li>Récupérer les coordonnées du tronçon de chaque capteur, puis les afficher sur une carte</li>
+<li>Lister les informations du premier mobilier</li>
+<li>Donner le nombre de mobiliers</li>
+<li>Lister les informations de la première transaction</li>
+<li>Donner le nombre de transactions</li>
+<li>Lister les informations du mobilier <code>1234</code> (cf <code>objectid</code>)</li>
+<li>Donner le nombre de mobiliers pour chaque arrondissement (<code>arrondt</code>)</li>
+<li>Croiser le régime (<code>regime</code>) et les arrondissements pour voir s’il y a des différences notables (idéalement en réalisant un graphique avec <code>ggplot</code>)</li>
+<li>Donner la distribution des montants payés (<code>montant carte</code>) et des durées payées (<code>durée payée (h)</code>) des transactions</li>
+<li>Représenter le nombre de transactions par arrondissement (la jointure se faire entre <code>horodateur</code> dans <code>mobiliers</code> et <code>numhoro</code> dans <code>transactions</code>)</li>
+<li>Représenter chaque mobilier sur la carte de Paris, en ajoutant une couleur en fonction du nombre de transactions réalisées durant l’année</li>
 </ol>
 </div>
 </div>
