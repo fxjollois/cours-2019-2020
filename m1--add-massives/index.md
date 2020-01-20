@@ -2,23 +2,19 @@
 
 Ce cours est une introduction à l'analyse de données massives, via l'utilisation de `python`.
 
-Jour 1
-- [Introduction à Python](seance1-intro.ipynb)
-- [Statistiques avec Python](seance2-stats.ipynb)
+- [Introduction à Python](seance1-intro.html)
+- [Statistiques avec Python](seance2-stats.html)
 
-Jour 2
-- [Visualisation de données avec Python](seance3-visualisation.ipynb)
-- [Cartographie avec Python](seance4-cartographie.ipynb)
+- [Visualisation de données avec Python](seance3-visualisation.html)
+- [Cartographie avec Python](seance4-cartographie.html)
 
-Jour 3
-- [Analyse de données avec Python](seance5-analyse.ipynb)
-- [TP noté]() <!-- tpnote1.ipynb -->
+- [Analyse de données avec Python](seance5-analyse.html)
+- [TP noté]() <!-- tpnote1.ipynb - - >
 
-Jour 4
-- [Introduction à MongoDB](https://fxjollois.github.io/cours-2019-2020/m1--add-massives/seance6-slides.html) - [Connexion à MongoDB, sous Python](seance6-mongodb.ipynb)
-- [TP noté]() <!-- tpnote2.ipynb -->
-
-Jour 5
+<!--
+- [Introduction à MongoDB](https://fxjollois.github.io/cours-2019-2020/m1--add-massives/seance6-slides.html)
+    - [Connexion à MongoDB, sous Python](seance6-mongodb.ipynb)
+- [TP noté]() <!-- tpnote2.ipynb - - >
 - [Données du projet](seance7-donnees-projet.ipynb)
 - [Travail à rendre](sujet-projet.ipynb)
 	- [Aide avec fichier GeoJSON](donnees-projet-aide.ipynb)

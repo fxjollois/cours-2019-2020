@@ -22,7 +22,7 @@
 ## UFR Math-Info
 
 - Master 1
-    - [Analyse de données massives](https://github.com/fxjollois/cours-2019-2020/blob/master/m1--add-massives/index.md)
+    - [Analyse de données massives](m1--add-massives)
 
 
 <!--
