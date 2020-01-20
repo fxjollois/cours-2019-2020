@@ -9,7 +9,7 @@ Ce cours est une introduction à l'analyse de données massives, via l'utilisati
 - [Cartographie avec Python](seance4-cartographie.html)
 
 - [Analyse de données avec Python](seance5-analyse.html)
-- [TP noté]() <!-- tpnote1.ipynb - - >
+- [TP noté]() <!-- tpnote1.ipynb -->
 
 <!--
 - [Introduction à MongoDB](https://fxjollois.github.io/cours-2019-2020/m1--add-massives/seance6-slides.html)
@@ -19,3 +19,4 @@ Ce cours est une introduction à l'analyse de données massives, via l'utilisati
 - [Travail à rendre](sujet-projet.ipynb)
 	- [Aide avec fichier GeoJSON](donnees-projet-aide.ipynb)
 
+-->
