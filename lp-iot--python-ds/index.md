@@ -4,7 +4,7 @@
 
 Ce cours est une introduction à l'utilisation de `python` pour la science des données.
 
-- [Introduction à Python](seance1-intro.ipynb)
-- [ACP](seance2-acp.ipynb)
-- [Classification](seance3-classif.ipynb)
+- [Introduction à Python](seance1-intro.html)
+- [ACP]() <!-- seance2-acp.html -->
+- [Classification]() <!-- seance3-classif.html -->
 - [TP noté]() <!-- tpnote.ipynb -->

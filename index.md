@@ -16,7 +16,7 @@
 ## Département Informatique, IUT Paris Descartes
 
 - LP IoT
-    - [Analyse Statistique des Données](https://github.com/fxjollois/cours-2019-2020/blob/master/lp-iot--python-ds/index.md)
+    - [Analyse Statistique des Données](lp-iot--python-ds)
 
 
 ## UFR Math-Info
