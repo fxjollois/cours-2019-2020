@@ -11,6 +11,8 @@
     - [Introduction à R et **MongoDB**](du-abd--r-mongodb.html)
     - [Introduction à R et **Hadoop**](du-abd--r-hadoop.html) (avec **SparkR**)
 - DU Dataviz
+    - [Séminaire de rentrée](https://docs.google.com/presentation/d/e/2PACX-1vROIoPeoSIhSLBM0xYxoD_Fy5OFndmpJFAjEJ1ZcZL-QyqGpMkTnBsEi7C1871YJpGDITSElbBsTUjV/pub?start=false&loop=false&delayms=3000)
+    - [Introduction à Tableau](du-dataviz--tableau)
     - [Introduction à d3.js](du-dataviz--d3js)    
 
 ## Département Informatique, IUT Paris Descartes
