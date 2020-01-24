@@ -3,6 +3,7 @@
 Ce cours est une introduction à l'analyse de données massives, via l'utilisation de `python`.
 
 - [Introduction à Python](seance1-intro.html)
+    - [correction](seance1-correction.html)
 - [Statistiques avec Python](seance2-stats.html)
 
 - [Visualisation de données avec Python](seance3-visualisation.html)
