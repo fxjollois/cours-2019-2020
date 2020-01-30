@@ -8,8 +8,7 @@
     - [SID](stid-2afa--sid/)
     - [Travaux de fin d'études](stid-2afa--tfe)
 - DU Analyste Big Data
-    - [Introduction à R et **MongoDB**](du-abd--r-mongodb.html)
-    - [Introduction à R et **Hadoop**](du-abd--r-hadoop.html) (avec **SparkR**)
+    - [Introduction à **MongoDB**](du-abd)
 - DU Dataviz
     - [Séminaire de rentrée](https://docs.google.com/presentation/d/e/2PACX-1vROIoPeoSIhSLBM0xYxoD_Fy5OFndmpJFAjEJ1ZcZL-QyqGpMkTnBsEi7C1871YJpGDITSElbBsTUjV/pub?start=false&loop=false&delayms=3000)
     - [Introduction à Tableau](du-dataviz--tableau)
