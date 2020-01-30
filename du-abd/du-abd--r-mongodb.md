@@ -210,8 +210,7 @@ Bien que dans l'esprit NoSQL, il est plutôt déconseillé de faire appel aux jo
 Nous disposons aussi d'une collection de documents nous indiquant l'étendue des notes prévues pour chaque score A, B et C.
 
 ```{r}
-g = mongo(url = "mongodb://193.51.82.104:2343",
-          db = "test",
+g = mongo(db = "du_abd",
           collection = "grades")
 g$find()
 ```
