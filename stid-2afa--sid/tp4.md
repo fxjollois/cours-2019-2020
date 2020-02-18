@@ -16,11 +16,11 @@ Suite à diverses réunions, nous avons établi les besoins métiers suivants : 
   - pourcentage d'évolution sur la période
   - meilleur département sur la période (avec % du CA global)
   - meilleure provenance sur la période (idem)
- - **Provenance** : 
+- **Provenance** : 
   - Tableau des provenances, classées dans l'ordre décroissant du CA total sur la période
   - Un clic sur une provenance va afficher l'évolution de celle-ci sur la période (même base graphique que la partie Global)
   - Ce même clic doit afficher une information sur les départements (pour répondre à la question : *quels départements sont plus liés à cette provenance ?*)
- - **Département** :
+- **Département** :
   - TOP5 et BOTTOM5
   - Un clic sur un des départements
   - 
