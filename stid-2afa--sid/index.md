@@ -12,4 +12,9 @@
     - [Correction partie integration](tp3-integration.zip) (fichier zip avec 4 scripts R)
 
 
-- Restitution d'informations
+- [Restitution d'informations](tp4)
+
+
+<!--
+<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=motuTZeCNEOC9mhoHTSpT3koJdJ7tCVLohD99orTllhUMlQ3V1VMV01WTEJEUEZRUDU2SDMxUlJWVC4u" target="_blank">QCM</a>
+-->
