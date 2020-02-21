@@ -12,19 +12,19 @@ Suite aux étapes précédentes (modélisation puis intégration des données), 
 Suite à diverses réunions, nous avons établi les besoins métiers suivants : un seul tableau de bord avec plusieurs parties
 
 - **Global** : basée sur le chiffre d'affaires 
-  - Graphique : évolution du CA sur toute la période (avec indication 2003/2004)
+  - Graphique : évolution du CA sur toute la période (avec indication des années)
   - Boîte d'info :
     - Pourcentage d'évolution sur la période
-    - Meilleur département sur la période (avec % du CA global)
-    - Meilleure provenance sur la période (idem)
-- **Provenance** : 
-  - Tableau des provenances, classées dans l'ordre décroissant du CA total sur la période
-  - Un clic sur une provenance va afficher l'évolution de celle-ci sur la période (même base graphique que la partie Global)
-  - Ce même clic doit afficher une information sur les départements (pour répondre à la question : *quels départements sont plus liés à cette provenance ?* - format à réfléchir)
-- **Département** :
-  - Tableau des départements, classés comme la partie précédent
-  - Un clic sur un des départements permet la aussi d'avoir l'évolution
-  - On doit aussi pouvoir avoir le détail par groupe (CA total et évolution - format aussi à réfléchir)
+    - Meilleur produit sur la période (avec % du CA global)
+    - Meilleure catégorie sur la période (idem)
+- **Catégorie** : 
+  - Tableau des catégories, classées dans l'ordre décroissant du CA total sur la période
+  - Un clic sur une catégorie va afficher l'évolution de celle-ci sur la période (même base graphique que la partie Global)
+  - Ce même clic doit afficher une information sur les fournisseurs (pour répondre à la question : quels fournisseurs sont plus liés à cette catégorie ? - format à réfléchir)
+- **Fournisseur** :
+  - TOP 10 et BOTTOM 10 des produits, classés comme la partie précédent
+  - Un clic sur un des fournisseurs permet la aussi d'avoir l'évolution
+  - On doit aussi pouvoir avoir le détail par produit (CA total et évolution - format aussi à réfléchir)
 
 ## Travail à faire
 
@@ -34,5 +34,5 @@ Réaliser par groupe de 2/3 donc un tableau de bord répondant aux besoins préc
     - A faire valider
 1. Création des dataframes qui vont servir ensuite
 1. Création de l'application shiny répondant aux besoins
-1. Réfléchir à compléter ce tableau de bord, par exemple avec des informations sur les sous-groupes, ou bien les liens entre départements et provenance
+1. Réfléchir à compléter ce tableau de bord, par exemple avec les liens entre fournisseurs et catégories
 
