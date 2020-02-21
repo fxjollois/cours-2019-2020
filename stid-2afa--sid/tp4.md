@@ -1,6 +1,6 @@
 # Restitution d'informations
 
-Suite aux étapes précédentes (modélisation puis intégration des données), dans une situation professionnelle, nous devons mettre en place un ou plusieurs tableaux de bords. Nous allons continuer le travail sur le data mart créé la dernière fois, et qu vous pouvez récupérer [en cliquant ici](datamart.sqlite) (format SQLite). Voici les étapes à suivre pour réaliser cette partie du travail :
+Suite aux étapes précédentes (modélisation puis intégration des données), dans une situation professionnelle, nous devons mettre en place un ou plusieurs tableaux de bords. Nous allons continuer le travail sur le data mart créé la dernière fois, et que vous pouvez récupérer [en cliquant ici](datamart.sqlite) (format SQLite). Voici les étapes à suivre pour réaliser cette partie du travail :
 
 1. Définir les besoins métiers en terme de tableaux de bords
 1. Etablir la liste des données nécessaires, et des éventuels pré-calculs possibles
@@ -22,7 +22,7 @@ Suite à diverses réunions, nous avons établi les besoins métiers suivants : 
   - Un clic sur une catégorie va afficher l'évolution de celle-ci sur la période (même base graphique que la partie Global)
   - Ce même clic doit afficher une information sur les fournisseurs (pour répondre à la question : quels fournisseurs sont plus liés à cette catégorie ? - format à réfléchir)
 - **Fournisseur** :
-  - TOP 10 et BOTTOM 10 des produits, classés comme la partie précédent
+  - TOP 10 et BOTTOM 10 des fournisseurs, classés comme la partie précédent
   - Un clic sur un des fournisseurs permet la aussi d'avoir l'évolution
   - On doit aussi pouvoir avoir le détail par produit (CA total et évolution - format aussi à réfléchir)
 
