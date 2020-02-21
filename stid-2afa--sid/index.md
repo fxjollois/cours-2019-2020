@@ -14,7 +14,6 @@
 
 - [Restitution d'informations](tp4)
 
+**A FAIRE AVANT 17h00**
 
-<!--
 <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=motuTZeCNEOC9mhoHTSpT3koJdJ7tCVLohD99orTllhUMlQ3V1VMV01WTEJEUEZRUDU2SDMxUlJWVC4u" target="_blank">QCM</a>
--->
