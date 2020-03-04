@@ -8,7 +8,9 @@ Ce cours est une introduction à l'analyse de données massives, via l'utilisati
     - [correction](seance2-correction.html)
 
 - [Visualisation de données avec Python](seance3-visualisation.html)
+    - [correction](seance3-correction.html)
 - [Cartographie avec Python](seance4-cartographie.html)
+    - [correction](seance4-correction.html)
 
 - [Analyse de données avec Python](seance5-analyse.html)
 - [TP noté]() <!-- tpnote1.ipynb -->
