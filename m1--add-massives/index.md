@@ -13,6 +13,7 @@ Ce cours est une introduction à l'analyse de données massives, via l'utilisati
     - [correction](seance4-correction.html)
 
 - [Analyse de données avec Python](seance5-analyse.html)
+    - [correction](seance5-correction.html)
 - [TP à rendre](tp1.html) <!-- tpnote1.ipynb -->
 
 <!--
