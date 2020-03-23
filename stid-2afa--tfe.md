@@ -9,17 +9,19 @@ Pour évaluer votre application, elle devra être disponible sur le site [`shiny
 
 ## Données possibles
 
-Vous trouverez ici une liste de données potentiellement intéressantes. Vous êtes libre de choisir d'autres données (sports, économies, transports, ...) si vous le souhaitez.
+Vous trouverez ici une liste de données potentiellement intéressantes. Vous êtes libre de choisir d'autres données (sports, économies, transports, loisirs, ...) si vous le souhaitez.
 
-- **Experimentation autour de la Place de la Nation** : [opendata.paris.fr](https://opendata.paris.fr/explore/?sort=modified&q=place+nation)
-- [Commerces de Paris](https://opendata.paris.fr/explore/dataset/commercesparis/)
-- Données AirBnB via [Inside AirBnB](http://insideairbnb.com/)
-- [Banque mondiale](http://www.banquemondiale.org)
+- AirBnB via [Inside AirBnB](http://insideairbnb.com/get-the-data.html) (il y a Paris par exemple)
 - [Indice de bonheur](https://happyplanetindex.org/about)
-- Température mondiale via [Climate Research Unit](https://crudata.uea.ac.uk/)
+- [Banque mondiale](https://donnees.banquemondiale.org/)
+- Climat via [Climate Research Unit](http://www.cru.uea.ac.uk/data)
+- Villes : [Paris](https://opendata.paris.fr/pages/home/), [New-York](https://opendata.cityofnewyork.us/), [San Francisco](https://datasf.org/)
+- Gouvernement (énormément de choix) : [data.gouv.fr](https://www.data.gouv.fr/fr/), [US](http://www.data.gov/), [Canada](http://ouvert.canada.ca/fr), [Royaume-Uni](http://data.gov.uk/), [Europe](http://data.europa.eu/euodp/fr/data), ...
+- [SNCF](https://data.sncf.com/), [Météo France](https://donneespubliques.meteofrance.fr/), [ENEDIS](https://www.enedis.fr/open-data), ...
+- [Portail mondial](https://opendatainception.io/) de sites proposant des open data
 - ...
 
-Vous pouvez bien évidemment compléter les données utilisées avec d'autres données (météo, INSEE, ...).
+Vous pouvez bien évidemment **compléter** les données utilisées avec d'autres données (météo, INSEE, ...).
 
 ## Contraintes
 
@@ -28,4 +30,4 @@ Vous pouvez bien évidemment compléter les données utilisées avec d'autres do
 - Application web `shiny` à produire sur [`shinyapps.io`](https://www.shinyapps.io/)
     - version gratuite largement suffisante pour le projet
 - Soutenance de l'application **date à définir**
-    - chaque groupe présentera son appli à toute la promo
+    - chaque groupe présentera son appli **à toute la promo**
