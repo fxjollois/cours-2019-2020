@@ -15,7 +15,6 @@ Ce cours est une introduction à l'analyse de données massives, via l'utilisati
 - [Analyse de données avec Python](seance5-analyse.html)
     - [correction](seance5-correction.html)
 - [TP à rendre](tp1.html) <!-- tpnote1.ipynb -->
-    - [correction](tp1-correction.html)
 
 - [Connexion à MongoDB, sous Python](seance6-mongodb.html)
     - [correction](seance6-correction.html)
