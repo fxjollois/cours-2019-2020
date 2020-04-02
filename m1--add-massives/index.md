@@ -19,6 +19,9 @@ Ce cours est une introduction à l'analyse de données massives, via l'utilisati
 - [Connexion à MongoDB, sous Python](seance6-mongodb.html)
     - [correction](seance6-correction.html)
 
+- [TP à rendre](tp2.html) <!-- tpnote1.ipynb -->
+
+
 <!--
 - [Introduction à MongoDB](https://fxjollois.github.io/cours-2019-2020/m1--add-massives/seance6-slides.html)
     - [Connexion à MongoDB, sous Python](seance6-mongodb.ipynb)
