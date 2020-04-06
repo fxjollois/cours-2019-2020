@@ -21,9 +21,9 @@ Ce cours est une introduction à l'analyse de données massives, via l'utilisati
 
 - [TP à rendre](tp2.html) <!-- tpnote1.ipynb -->
 
-- [Données du projet](seance7-donnees-projet.ipynb)
-- [Travail à rendre](sujet-projet.ipynb)
-	- [Aide avec fichier GeoJSON](donnees-projet-aide.ipynb)
+- [Données du projet](seance7-donnees-projet.html)
+- [Travail à rendre](sujet-projet.html)
+	- [Aide avec fichier GeoJSON](donnees-projet-aide.html)
 
 <!--
 - [Introduction à MongoDB](https://fxjollois.github.io/cours-2019-2020/m1--add-massives/seance6-slides.html)
