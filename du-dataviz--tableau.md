@@ -214,7 +214,7 @@ IF ([Year] = [pChoixAnnee]) THEN [Documents] ELSE 0 END
 
 ### Au final
 
-Vous devriez avoir à la fin ce [tableau](https://public.tableau.com/profile/fx.jollois#!/vizhome/visualisation-donnees-tableau/Analyse)
+Vous devriez avoir à la fin ce [tableau](https://public.tableau.com/profile/fx.jollois#!/vizhome/DUDataviz-2019-2020-Rsultat1/Histoire1?publish=yes)
 
 ## A FAIRE
 
