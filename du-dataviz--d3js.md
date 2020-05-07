@@ -19,21 +19,28 @@ Il y a plusieurs concepts spécifiques à bien comprendre pour l'utiliser pleine
 
 ## Base 
 
-### Sélection et modification
+### Sélection
 
-Il existe deux fonctions de sélection respectivement d'un élément (`select()`) et de l'ensemble des éléments (`selectAll()`) correspondant à la définition passée en paramètre (sélecteur idem que pour le CSS) :
+Il existe deux fonctions de sélection respectivement d'un seul élément (avec `select()`) et de l'ensemble des éléments (avec `selectAll()`) correspondant à la définition passée en paramètre :
 
 ```js
 var selection1 = d3.select("selecteur");
 var selection2 = d3.selectAll("selecteur");
 ```
 
-On a de plus deux fonctions sur l'objet renvoyé par ces sélecteurs pour connaître la taille de la sélection :
+Quand on utilise une sélection d'un seul élément (avec `select()` donc), mais qu'il existe plusieurs éléments de ce type dans le document, c'est le **premier** qui est renvoyé.
+
+La sélection se fait de manière identique que pour le CSS :
+
+- `"balise"` : pour tout ce qui est balise html (`div`, `h1`, `body`, ...)
+- `".maclasse"` : pour le ou les objets de la classe indiquée (indiquée via `"class='maclasse'"`)
+- `"#identifiant"` : pour l'objet (unique normalement) avec cet identifiant (indiquée via `"id='identifiant'"`)
+
+Ces sélecteurs permettent ensuite d'accéder à plusieurs fonctions utiles pour manipuler les objets, comme nous le verrons. Voici trois premières fonctions  :
 
 - `size()` : taille de la sélection
 - `empty()` : sélection vide ou non
-
-
+- `html()` : contenu html de la sélection
 
 ### Modification, ajout et insertion d'éléments
 
@@ -50,6 +57,8 @@ Deux fonctions sont utiles pour respectivement insérer un élément `HTML` fils
 selection.append("balise");
 selection.insert("balise");
 ```
+
+Vous pouvez retrouver sur [cette page](du-dataviz--d3js/02-modification.html) des exemples concrets.
 
 ### Exemple 
 
