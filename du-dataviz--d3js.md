@@ -34,6 +34,7 @@ On a de plus deux fonctions sur l'objet renvoyé par ces sélecteurs pour conna�
 - `empty()` : sélection vide ou non
 
 
+
 ### Modification, ajout et insertion d'éléments
 
 Plusieurs fonctions permettent de modifier les éléments sélectionnés (comme par exemple `style()` pour appliquer des règles `CSS` ou `html()` pour modifier le contenu de la balise). Le code suivant permet de mettre le texte en rouge pour tout le corps de la page
