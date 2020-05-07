@@ -17,6 +17,7 @@ On a de plus deux fonctions sur l'objet renvoyé par ces sélecteurs pour conna�
 - `empty()` : sélection vide ou non
 
 
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script>
 var H1 = d3.select("h1");
 console.log(H1);
