@@ -1,5 +1,7 @@
 # Visualisation de données - Tableau
 
+Vous trouverez le déroulé filmé de cette séance dans [cette vidéo](https://youtu.be/WIEtQsNUVL4).
+
 ## Introduction et données
 
 Dans ce cours, nous allons aborder l'utilisation du logiciel [**Tableau**](https://www.tableau.com/fr-fr), outil phare dans le domaine de la **BI** et de la **Visualisation de données**.
