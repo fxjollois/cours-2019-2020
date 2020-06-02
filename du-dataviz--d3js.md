@@ -58,8 +58,6 @@ selection.append("balise");
 selection.insert("balise");
 ```
 
-Vous pouvez retrouver sur [cette page](du-dataviz--d3js/02-modification.html) des exemples concrets.
-
 ### Exemple 
 
 Ici, on sélectionne la balise `<body>` (qui est vide au départ). Dans cette sélection, on ajoute deux balises `div`, pour mettre dans la première la taille de la sélection (`1` normalement) et dans la seconde le test si elle est vide ou non (normalement `false`). Enfin, on met le texte de la sélection en rouge (donc tout).
