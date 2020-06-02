@@ -1,5 +1,7 @@
 # Visualisation de données - d3.js
 
+[Version diaporama](du-dataviz-d3js--slides.html)
+
 > Data-Driven Documents
 
 [d3.js](http://www.d3js.org) est une librairie `javascript` très complète avec beaucoup d'exemples à disposition, avec une personnalisation totale possible. Elle permet l'accès à des primitives `SVG` permettant toute innovation. Malheureusement, elle est peu accessible directement et assez technique.
