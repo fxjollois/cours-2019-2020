@@ -1,6 +1,6 @@
 # Visualisation de données - d3.js
 
-[Version diaporama](du-dataviz-d3js--slides.html)
+[Version diaporama](du-dataviz--d3js--slides.html)
 
 > Data-Driven Documents
 
