@@ -339,9 +339,7 @@ Objet `d3.event` : informations de la souris (position principalement),
 Création de graphiques au format `SVG` (*Scalable Vector Graphics*)
 
 - Intérêt principal de la librairie 
-
-- Graphiques définis dans un langage de type `XML`
-    - similaire à `HTML`
+- Graphiques définis dans un langage de type `XML` (similaire à `HTML`)
 - Basé sur des primitives de dessin (rectangle, cercle, ligne, texte, ...)
 - *Zoomable* sans perte de définition
 
